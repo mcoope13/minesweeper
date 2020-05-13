@@ -23,7 +23,11 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
     let numberOfBombsPlaced = 0;
     while (numberOfBombsPlaced < numberOfBombs) {
         const randomRowIndex = Math.floor(Math.random() * numberOfRows);
-        const randomColumnIndex = Math.floor(Math.random() * numberOfColumns);
+        let randomColumnIndex = Math.floor(Math.random() * numberOfColumns);
+        if (board[randomRowIndex][randomColumnIndex] !== 'B') {
+            board[randomRowIndex][randomColumnIndex] = 'B';
+            numberOfBombsPlaced++;
+        }
         board[randomRowIndex][randomColumnIndex] = 'B';
         numberOfBombsPlaced++;
     } 
